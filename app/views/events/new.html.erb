@@ -1,0 +1,49 @@
+<style>
+  .center {
+    display: flex;
+    justify-content: center;
+   <!--  align-items: center; -->
+    height: 100vh;
+  }
+  form {
+    width: 400px;
+  }
+</style>
+<div class="center">
+    <%= form_for @event do |f| %>
+
+        <div class="form-group">
+          <%= f.label :title %>
+          <%= f.text_field :title, class: "form-control", required: true, minlength: 3, maxlength: 50 %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :location %>
+          <%= f.text_field :location, class: "form-control", required: true, maxlength: 50 %>
+        </div>
+    
+        <div class="form-group">
+          <%= f.label :description %>
+          <%= f.text_area :description, class: "form-control", required: true, rows: 3 %>
+        </div>
+        
+
+        <div class="form-group">
+          <%= f.label :start_date %>
+          <%= f.datetime_local_field :start_date, class: "form-control", required: true %>
+        </div>
+        
+        <div class="form-group">
+          <%= f.label :duration %>
+          <%= f.number_field :duration, class: "form-control", required: true, min: 1, step: 1 %>
+          <small id="titleHelp" class="form-text text-muted">In minutes please</small>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :price %>
+          <%= f.number_field :price, class: "form-control", required: true, min: 0, step: 0.01 %>
+        </div>
+                
+        <%= f.submit "Create Event", class: "btn btn-primary" %>
+      <% end %>
+</div>
